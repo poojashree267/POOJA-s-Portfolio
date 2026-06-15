@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pooja Shree — Portfolio 2026</title>
+    <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)">
+    <link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+    <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=DM+Mono:wght@300;400&family=Jost:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap)" rel="stylesheet">
+    <style>
+        :root {
+            --warm-white: #f5f0fa;
+            --ink: #2d1b4e;
+            --ink-soft: #4a3366;
+            --muted: #8b7aa8;
+            --accent: #7c4dff;
+            --accent-mid: #6b3fd9;
+            --accent-soft: #e8dff5;
+            --border: #c9b8e0;
+            --lavender: #e6e0f0;
+            --purple-deep: #1a0f2e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            font-weight: 400;
+            background: var(--warm-white);
+            color: var(--ink);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        em, i, .italic-accent {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* ═══════════════════════════════════════════
+           NAVIGATION
+        ═══════════════════════════════════════════ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 24px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(180deg, rgba(26, 15, 46, 0.9) 0%, transparent 100%);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+        }
+
+        .nav-logo {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.9);
+            opacity: 0;
+            animation: fadeIn 1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.8);
+            opacity: 0;
+            animation: fadeIn 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .nav-links li:nth-child(1) a { animation-delay: 0.4s; }
+        .nav-links li:nth-child(2) a { animation-delay: 0.5s; }
+        .nav-links li:nth-child(3) a { animation-delay: 0.6s; }
+        .nav-links li:nth-child(4) a { animation-delay: 0.7s; }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .nav-hamburger span {
+            width: 24px;
+            height: 1.5px;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .nav-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .nav-drawer {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: var(--ink);
+            padding: 100px 40px;
+            transition: right 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: 999;
+        }
+
+        .nav-drawer.active {
+            right: 0;
+        }
+
+        .nav-drawer ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .nav-drawer a {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .nav-drawer a:hover {
+            color: var(--accent);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ═══════════════════════════════════════════
+           HERO SECTION
+        ═══════════════════════════════════════════ */
+        .hero {
+            --hero-fade: 0;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--purple-deep) 0%, var(--ink) 50%, var(--ink-soft) 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(26, 15, 46, 0.55);
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 55%;
+            z-index: 4;
+            pointer-events: none;
+            opacity: var(--hero-fade);
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(245, 240, 250, 0.18) 30%,
+                rgba(245, 240, 250, 0.62) 60%,
+                rgba(245, 240, 250, 0.92) 82%,
+                var(--warm-white) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .hero-tag {
+            font-family: 'DM Mono', monospace;
+            font-size: 9px;
+            font-weight: 400;
+            letter-spacing: 0.3em;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 24px;
+            opacity: 0;
+            animation: heroFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+        }
+
+        .hero-intro {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.25em;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 16px;
+            opacity: 0;
+            animation: heroFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.7s forwards;
+        }
+
+        .hero-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(110px, 17vw, 218px);
+            font-weight: 700;
+            font-style: italic;
+            color: #fff;
+            line-height: 0.9;
+            text-shadow: 
+                0 4px 30px rgba(124, 77, 255, 0.3),
+                0 8px 60px rgba(26, 15, 46, 0.5);
+            margin-bottom: 24px;
+            opacity: 0;
+            animation: heroFadeUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.9s forwards;
+        }
+
+        .hero-roles {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 48px;
+            opacity: 0;
+            animation: heroFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 1.1s forwards;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: heroFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 1.3s forwards;
+        }
+
+        .btn {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 16px 32px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            border: none;
+        }
+
+        .btn--filled {
+            background: var(--ink);
+            color: #fff;
+            border: 1px solid var(--ink);
+        }
+
+        .btn--filled:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(124, 77, 255, 0.3);
+        }
+
+        .btn--ghost {
+            background: transparent;
+            color: #fff;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 16px 8px;
+        }
+
+        .btn--ghost:hover {
+            border-bottom-color: var(--accent);
+            color: var(--accent);
+        }
+
+        @keyframes heroFadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Floating Columns */
+        .hero-column {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            pointer-events: none;
+            will-change: transform;
+        }
+
+        .hero-frame {
+            background: var(--ink);
+            padding: 5px 5px 30px;
+            box-shadow:
+                0 30px 60px rgba(0, 0, 0, 0.22),
+                0 10px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .hero-frame img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .hero-column.left-far {
+            left: 1%;
+            top: 6vh;
+            width: 13vw;
+            z-index: 1;
+        }
+
+        .hero-column.left-mid {
+            left: 16%;
+            top: 44vh;
+            width: 10vw;
+            z-index: 3;
+        }
+
+        .hero-column.right-mid {
+            right: 15%;
+            top: 26vh;
+            width: 10vw;
+            z-index: 3;
+        }
+
+        .hero-column.right-far {
+            right: 1%;
+            top: 10vh;
+            width: 13vw;
+            z-index: 1;
+        }
+
+        .hero-column.left-bottom {
+            left: 7%;
+            top: 78vh;
+            width: 11vw;
+            z-index: 1;
+        }
+
+        .hero-column.right-bottom {
+            right: 7%;
+            top: 72vh;
+            width: 11vw;
+            z-index: 1;
+        }
+
+        /* ═══════════════════════════════════════════
+           ABOUT SECTION
+        ═══════════════════════════════════════════ */
+        .about {
+            padding: 120px 48px;
+            background: var(--warm-white);
+        }
+
+        .about-statement {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            align-items: start;
+        }
+
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 400;
+            line-height: 1.3;
+            margin-bottom: 32px;
+            color: var(--ink);
+        }
+
+        .about-text p {
+            font-family: 'Jost', sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--ink-soft);
+        }
+
+        .about-portrait {
+            position: relative;
+            width: 340px;
+            height: 440px;
+            border: 1px solid var(--border);
+            padding: 12px;
+            background: #fff;
+            box-shadow: 0 20px 60px rgba(45, 27, 78, 0.08);
+        }
+
+        .about-portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Interests */
+        .about-interests {
+            max-width: 1200px;
+            margin: 0 auto 100px;
+        }
+
+        .about-interests-title {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 32px;
+        }
+
+        .interests-grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .interest-card {
+            width: 88px;
+            height: 88px;
+            border: 1px solid var(--ink);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: var(--lavender);
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            cursor: default;
+        }
+
+        .interest-card:hover {
+            background: var(--accent-soft);
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .interest-card span {
+            font-family: 'DM Mono', monospace;
+            font-size: 9px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--ink);
+        }
+
+        /* Life Polaroids */
+        .about-life {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-life-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 48px;
+            color: var(--ink);
+        }
+
+        .polaroids {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .polaroid {
+            background: var(--ink);
+            padding: 10px 10px 40px;
+            box-shadow: 0 15px 40px rgba(45, 27, 78, 0.15);
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .polaroid.visible {
+            opacity: 1;
+            transform: translateY(0) rotate(var(--rotation, 0deg));
+        }
+
+        .polaroid:nth-child(1) { --rotation: -3deg; transition-delay: 0.1s; }
+        .polaroid:nth-child(2) { --rotation: 2deg; transition-delay: 0.2s; }
+        .polaroid:nth-child(3) { --rotation: -2deg; transition-delay: 0.3s; }
+        .polaroid:nth-child(4) { --rotation: 4deg; transition-delay: 0.4s; }
+
+        .polaroid img {
+            width: 200px;
+            height: 240px;
+            object-fit: cover;
+            background: var(--lavender);
+        }
+
+        /* ═══════════════════════════════════════════
+           QUOTE BANNER
+        ═══════════════════════════════════════════ */
+        .quote-banner {
+            padding: 100px 48px;
+            background: linear-gradient(135deg, var(--lavender) 0%, var(--accent-soft) 100%);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .quote-banner blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(24px, 4vw, 42px);
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.5;
+            color: var(--ink);
+            max-width: 900px;
+            margin: 0 auto 24px;
+        }
+
+        .quote-banner blockquote .highlight {
+            color: var(--accent);
+        }
+
+        .quote-banner cite {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-style: normal;
+        }
+
+        /* ═══════════════════════════════════════════
+           WORK SECTION
+        ═══════════════════════════════════════════ */
+        .work {
+            padding: 120px 48px;
+            background: var(--warm-white);
+        }
+
+        .work-header {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+        }
+
+        .work-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(42px, 6vw, 72px);
+            font-weight: 400;
+            color: var(--ink);
+        }
+
+        .work-header h2 em {
+            color: var(--accent);
+        }
+
+        .masonry {
+            display: flex;
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .masonry-col {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .masonry-col--wide {
+            flex: 1.38;
+        }
+
+        .masonry-col--narrow {
+            flex: 1;
+        }
+
+        .work-item {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            background: var(--lavender);
+            min-height: 300px;
+        }
+
+        .work-item img {
+            width: 100%;
+            height: auto;
+            min-height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .work-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .work-item-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(26, 15, 46, 0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 32px;
+            opacity: 0;
+            transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .work-item:hover .work-item-overlay {
+            opacity: 1;
+        }
+
+        .work-item-category {
+            font-family: 'DM Mono', monospace;
+            font-size: 9px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+        }
+
+        .work-item-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 400;
+            color: #fff;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+        }
+
+        .work-item:hover .work-item-category,
+        .work-item:hover .work-item-title {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* ═══════════════════════════════════════════
+           WHAT I DO SECTION
+        ═══════════════════════════════════════════ */
+        .services {
+            padding: 120px 48px;
+            background: var(--lavender);
+            border-top: 1px solid var(--border);
+        }
+
+        .services-header {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+        }
+
+        .services-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(42px, 6vw, 72px);
+            font-weight: 400;
+            color: var(--ink);
+        }
+
+        .services-header h2 em {
+            color: var(--accent);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            padding: 40px 32px;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(45, 27, 78, 0.1);
+            border-color: var(--accent);
+        }
+
+        .service-card-number {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 400;
+            color: var(--ink);
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .service-card p {
+            font-family: 'Jost', sans-serif;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ink-soft);
+        }
+
+        /* ═══════════════════════════════════════════
+           CONTACT SECTION
+        ═══════════════════════════════════════════ */
+        .contact {
+            padding: 120px 48px;
+            background: var(--warm-white);
+            border-top: 1px solid var(--border);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .contact-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.2;
+            color: var(--ink);
+            margin-bottom: 48px;
+        }
+
+        .contact-info h2 em {
+            color: var(--accent);
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .contact-link-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 9px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+            width: 80px;
+        }
+
+        .contact-link a {
+            font-family: 'Jost', sans-serif;
+            font-size: 15px;
+            font-weight: 400;
+            color: var(--ink);
+            border-bottom: 1px solid transparent;
+        }
+
+        .contact-link a:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group label {
+            font-family: 'DM Mono', monospace;
+            font-size: 9px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 0;
+            font-family: 'Jost', sans-serif;
+            font-size: 15px;
+            font-weight: 400;
+            color: var(--ink);
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--border);
+            outline: none;
+            transition: border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            resize: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-bottom-color: var(--accent);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+        }
+
+        .contact-form .btn {
+            align-self: flex-start;
+            background: var(--ink);
+            color: #fff;
+            border: 1px solid var(--ink);
+        }
+
+        .contact-form .btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* ═══════════════════════════════════════════
+           FOOTER
+        ═══════════════════════════════════════════ */
+        .footer {
+            background: var(--ink);
+            padding: 60px 48px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 32px;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 700;
+            font-style: italic;
+            color: #fff;
+        }
+
+        .footer-copyright {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-social a {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-social a:hover {
+            color: var(--accent);
+        }
+
+        /* ═══════════════════════════════════════════
+           SCROLL REVEAL
+        ═══════════════════════════════════════════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ═══════════════════════════════════════════
+           PARALLAX HEADINGS
+        ═══════════════════════════════════════════ */
+        .parallax-heading {
+            will-change: transform;
+        }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE STYLES
+        ═══════════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .about-statement {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .about-portrait {
+                width: 100%;
+                max-width: 340px;
+                margin: 0 auto;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                padding: 20px 24px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-hamburger {
+                display: flex;
+            }
+
+            .hero,
+            .about,
+            .work,
+            .services,
+            .contact,
+            .quote-banner {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            .masonry {
+                flex-direction: column;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .polaroid img {
+                width: 160px;
+                height: 200px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-social {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-column.left-mid,
+            .hero-column.right-mid,
+            .hero-column.left-bottom,
+            .hero-column.right-bottom {
+                display: none;
+            }
+
+            .polaroids {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            input,
+            textarea {
+                font-size: 16px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .interests-grid {
+                justify-content: center;
+            }
+
+            .interest-card {
+                width: 72px;
+                height: 72px;
+            }
+
+            .polaroids {
+                gap: 16px;
+            }
+
+            .polaroid {
+                padding: 8px 8px 32px;
+            }
+
+            .polaroid img {
+                width: 130px;
+                height: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="#" class="nav-logo">Pooja Shree</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#services">What I Do</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div class="nav-drawer" id="drawer">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#services">What I Do</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <!-- Floating Photo Columns -->
+        <div class="hero-column left-far" data-speed="0.15">
+            <div class="hero-frame">
+                <img src="C:\Users\Admin\Downloads\WhatsApp Image 2026-06-14 at 7.20.07 PM.jpeg" alt="Code on screen">
+            </div>
+        </div>
+        <div class="hero-column left-mid" data-speed="0.08">
+            <div class="hero-frame">
+                <img src="C:\Users\Admin\Downloads\WhatsApp Image 2026-06-14 at 7.21.37 PM.jpeg" alt="Programming">
+            </div>
+        </div>
+        <div class="hero-column right-mid" data-speed="0.1">
+            <div class="hero-frame">
+                <img src="C:\Users\Admin\Downloads\WhatsApp Image 2026-06-14 at 7.20.05 PM.jpeg" alt="Tech workspace">
+            </div>
+        </div>
+        <div class="hero-column right-far" data-speed="0.12">
+            <div class="hero-frame">
+                <img src="C:\Users\Admin\Pictures\WhatsApp Image 2026-06-14 at 7.20.06 PM.JPG" alt="Technology">
+            </div>
+        </div>
+        <div class="hero-column left-bottom" data-speed="0.06">
+            <div class="hero-frame">
+                <img src="C:\Users\Admin\Downloads\poojashree.jpeg" alt="Innovation">
+            </div>
+        </div>
+        <div class="hero-column right-bottom" data-speed="0.07">
+            <div class="hero-frame">
+                <img src="C:\Users\Admin\Pictures\WhatsApp Image 2026-06-14 at 7.20.06 PM (1).JPG" alt="Development">
+            </div>
+        </div>
+
+        <div class="hero-content">
+            <p class="hero-tag">Portfolio — 2026</p>
+            <p class="hero-intro">Hi, I'm</p>
+            <h1 class="hero-name">Pooja</h1>
+            <p class="hero-roles">Developer · Innovator · IT Professional · 21</p>
+            <div class="hero-cta">
+                <a href="#work" class="btn btn--filled">View Work</a>
+                <a href="#contact" class="btn btn--ghost">Let's Talk →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-statement fade-in">
+            <div class="about-text">
+                <h2>Building <em>intelligent solutions</em> through code, creativity, and continuous learning.</h2>
+                <p>I'm an IT professional fresher who's passionate about software development, artificial intelligence, and creating impactful digital experiences. From machine learning projects to full-stack web applications, I enjoy turning ideas into practical solutions. I'm constantly learning, improving my skills, and preparing to build a meaningful career in technology.</p>
+            </div>
+            <div class="about-portrait">
+                <img src="C:\Users\Admin\Downloads\poojaport.jpeg" alt="Pooja Shree portrait">
+            </div>
+        </div>
+
+        <div class="about-interests fade-in">
+            <p class="about-interests-title">My Interests</p>
+            <div class="interests-grid">
+                <div class="interest-card">
+                    <span>AI</span>
+                </div>
+                <div class="interest-card">
+                    <span>Coding</span>
+                </div>
+                <div class="interest-card">
+                    <span>Design</span>
+                </div>
+                <div class="interest-card">
+                    <span>Technology</span>
+                </div>
+                <div class="interest-card">
+                    <span>Travel</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-life fade-in">
+            <h3 class="about-life-title">A Peek At My Life</h3>
+            <div class="polaroids">
+                <div class="polaroid">
+                    <img src="C:\Users\Admin\Downloads\WhatsApp Image 2026-06-14 at 7.37.44 PM.jpeg" alt="Life moment 1">
+                </div>
+                <div class="polaroid">
+                    <img src="C:\Users\Admin\Downloads\WhatsApp Image 2026-06-14 at 8.32.50 PM.jpeg" alt="Life moment 2">
+                </div>
+                <div class="polaroid">
+                    <img src="C:\Users\Admin\Downloads\WhatsApp Image 2026-06-14 at 8.36.39 PM.jpeg" alt="Life moment 3">
+                </div>
+                <div class="polaroid">
+                    <img src="C:\Users\Admin\Downloads\WhatsApp Image 2026-06-14 at 8.36.38 PM.jpeg" alt="Life moment 4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Banner -->
+    <section class="quote-banner">
+        <blockquote>"Every project is a chance to <span class="highlight">learn</span> something that textbooks can't teach."</blockquote>
+        <cite>— Pooja Shree</cite>
+    </section>
+
+    <!-- Work Section -->
+    <section class="work" id="work">
+        <div class="work-header fade-in">
+            <h2>The <em>work</em></h2>
+        </div>
+        <div class="masonry">
+            <div class="masonry-col masonry-col--wide">
+                <div class="work-item fade-in">
+                    <img src="C:\Users\Admin\Downloads\WhatsApp Image 2026-06-15 at 12.45.55 PM.jpeg" alt="Project 1">
+                    <div class="work-item-overlay">
+                        <span class="work-item-category">Health Tracker using HTML, CSS, and JavaScript</span>
+                        <h3 class="work-item-title">Developed a web-based health tracker to monitor daily activities . The app allows users to input and visualize
+their progress using graphical indicators and simple UI elements.</h3>
+                    </div>
+                </div>
+                <div class="work-item fade-in">
+                    <img src="C:\Users\Admin\Downloads\WhatsApp Image 2026-06-15 at 1.01.56 PM.jpeg" alt="Project 3">
+                    <div class="work-item-overlay">
+                        <span class="work-item-category">MARKD-BOOKMARK</span>
+                        <h3 class="work-item-title">Markd is a clean and modern bookmark organizer dashboard designed to help users save, organize, and manage their favorite websites efficiently. It provides features like collections, tags, pinned bookmarks, search functionality, and quick access to categorized resources in a simple and user-friendly interface.</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="masonry-col masonry-col--narrow">
+                <div class="work-item fade-in">
+                    <img src="C:\Users\Admin\Downloads\WhatsApp Image 2026-06-15 at 12.51.09 PM.jpeg" alt="Project 2">
+                    <div class="work-item-overlay">
+                        <span class="work-item-category">SATURN-E-Commerce Website using HTML, CSS, and JavaScript</span>
+                        <h3 class="work-item-title">Created a dynamic and responsive e-commerce website showcasing beauty and skincare products.
+Designed multiple pages, including product listings, shopping cart, and payment gateway simulation, to
+demonstrate complete online shopping flow.</h3>
+                    </div>
+                </div>
+                <div class="work-item fade-in">
+                    <img src="C:\Users\Admin\Downloads\WhatsApp Image 2026-06-15 at 2.25.41 PM.jpeg"alt="Project 4">
+                    <div class="work-item-overlay">
+                        <span class="work-item-category">SKYLARK</span>
+                        <h3 class="work-item-title">SKYLARK is a modern web application that allows users to search for any city and view real-time weather information, including temperature, weather conditions, humidity, and wind speed using a Weather API. It provides a clean, responsive, and user-friendly interface for quick weather updates.
+</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What I Do Section -->
+    <section class="services" id="services">
+        <div class="services-header fade-in">
+            <h2>What <em>I do</em></h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <span class="service-card-number">01</span>
+                <h3>Web Development</h3>
+                <p>Creating responsive and user-friendly websites using modern web technologies and clean design principles.</p>
+            </div>
+            <div class="service-card fade-in">
+                <span class="service-card-number">02</span>
+                <h3>AI & Machine Learning Projects</h3>
+                <p>Building intelligent applications that solve real-world problems through data analysis and machine learning techniques.</p>
+            </div>
+            <div class="service-card fade-in">
+                <span class="service-card-number">03</span>
+                <h3>Software Development</h3>
+                <p>Developing efficient, scalable, and practical software solutions with a focus on functionality and user experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-grid">
+            <div class="contact-info fade-in">
+                <h2>Let's create something <em>amazing</em> together</h2>
+                <div class="contact-links">
+                    <div class="contact-link">
+                        <span class="contact-link-label">Email</span>
+                        <a href="mailto:sukija2004@gmail.com">sukija2004@gmail.com</a>
+                    </div>
+                    <div class="contact-link">
+                        <span class="contact-link-label">Instagram</span>
+                        <a href="[instagram.com](https://instagram.com/pooja.shree)" target="_blank" rel="noopener">@pooja.shree</a>
+                    </div>
+                    <div class="contact-link">
+                        <span class="contact-link-label">GitHub</span>
+                        <a href="[github.com](https://github.com/poojashree267)" target="_blank" rel="noopener">poojashree267</a>
+                    </div>
+                    <div class="contact-link">
+                        <span class="contact-link-label">LinkedIn</span>
+                        <a href="[linkedin.com](https://www.linkedin.com/in/pooja-shree-pandian)" target="_blank" rel="noopener">Pooja Shree Pandian</a>
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form fade-in" id="contact-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <span class="footer-logo">Pooja Shree</span>
+            <span class="footer-copyright">© 2026 — All rights reserved</span>
+            <div class="footer-social">
+                <a href="[instagram.com](https://instagram.com/pooja.shree)" target="_blank" rel="noopener">Instagram</a>
+                <a href="[github.com](https://github.com/poojashree267)" target="_blank" rel="noopener">GitHub</a>
+                <a href="[linkedin.com](https://www.linkedin.com/in/pooja-shree-pandian)" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="mailto:sukija2004@gmail.com">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation
+        const hamburger = document.getElementById('hamburger');
+        const drawer = document.getElementById('drawer');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            drawer.classList.toggle('active');
+        });
+
+        // Close drawer when clicking a link
+        drawer.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                drawer.classList.remove('active');
+            });
+        });
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Observe polaroids
+        document.querySelectorAll('.polaroid').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission handling
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const name = formData.get('name');
+            
+            alert(`Thanks for reaching out, ${name}! I'll get back to you soon.`);
+            e.target.reset();
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Hero Column Parallax + Hero Fade
+        const heroColumns = document.querySelectorAll('.hero-column');
+        const heroSection = document.querySelector('.hero');
+
+        window.addEventListener('scroll', () => {
+            const y = window.scrollY;
+
+            heroColumns.forEach(col => {
+                const speed = parseFloat(col.dataset.speed || 0);
+                col.style.transform = `translateY(${-y * speed}px)`;
+            });
+
+            const fade = Math.min(y / 500, 1);
+            heroSection.style.setProperty('--hero-fade', fade);
+        });
+
+        // Reveal Observer
+        const revealObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.15
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Parallax Headings
+        const parallaxHeads = document.querySelectorAll('.parallax-heading');
+
+        function updateParallax() {
+            const vh = window.innerHeight / 2;
+
+            parallaxHeads.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const center = rect.top + rect.height / 2;
+                const distance = center - vh;
+                el.style.transform = `translateY(${distance * 0.04}px)`;
+            });
+
+            requestAnimationFrame(updateParallax);
+        }
+
+        requestAnimationFrame(updateParallax);
+    </script>
+</body>
+</html>
