@@ -3,7 +3,7 @@ Portfolio is a modern and visually refined personal portfolio website designed t
 
 OUTPUT
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/1c663d8b-6ccc-491b-958c-a2de67ee1677" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/81aee87d-331c-4643-820f-a22c3741899d" />
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8345ac06-64a0-43ad-9adb-937c6e7c216f" />
 
