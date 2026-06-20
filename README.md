@@ -3,12 +3,12 @@ Portfolio is a modern and visually refined personal portfolio website designed t
 
 OUTPUT
 
-![Uploading image.png…]()
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/1c663d8b-6ccc-491b-958c-a2de67ee1677" />
 
-![Uploading image.png…]()
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8345ac06-64a0-43ad-9adb-937c6e7c216f" />
 
-![Uploading image.png…]()
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a1589e24-dc38-48aa-9ff8-999bfbfccbfb" />
 
-![Uploading image.png…]()
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/09aa4544-b8dc-4815-b07b-4fb3984e1536" />
 
-![Uploading image.png…]()
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/540e8fe2-1eea-4afa-9f52-7b0e2b2f08f2" />
